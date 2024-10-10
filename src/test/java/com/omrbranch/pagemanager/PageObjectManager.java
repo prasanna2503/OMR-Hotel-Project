@@ -9,15 +9,15 @@ import com.omrbranch.pages.SelectHotelPage;
 
 public class PageObjectManager {
 		
-	private LoginPage logiPage;
+	private LoginPage loginPage;
 	private SearchHotelPage searchHotelPage;
 	private SelectHotelPage selectHotelPage;
 	private BookHotelPage bookHotelPage;
 	private BookingConfirmPage bookingConfirmPage;
 	private MyBookingPage bookingPage;
 	
-	public LoginPage getLogiPage() {
-		return (logiPage==null)?logiPage = new LoginPage():logiPage;
+	public LoginPage getLoginPage() {
+		return (loginPage==null)?loginPage = new LoginPage():loginPage;
 	}
 	public SearchHotelPage getSearchHotelPage() {
 		return (searchHotelPage==null)?searchHotelPage= new SearchHotelPage():searchHotelPage;
@@ -35,6 +35,6 @@ public class PageObjectManager {
 		return (bookingPage==null)?bookingPage= new MyBookingPage():bookingPage;
 	}
 	
-	
+
 	
 }

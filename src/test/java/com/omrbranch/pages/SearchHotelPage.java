@@ -26,10 +26,10 @@ public class SearchHotelPage extends BaseClass {
 	private WebElement hotelRoomType;
 	
 	@FindBy(name="check_in")
-	private WebElement checkInDate;
+	private WebElement check_InDate;
 	
 	@FindBy(name="check_out")
-	private WebElement checkOutDate;
+	private WebElement check_OutDate;
 	
 	@FindBy(id="no_rooms")
 	private WebElement roomCount;
@@ -45,6 +45,48 @@ public class SearchHotelPage extends BaseClass {
 	
 	@FindBy(id="searchBtn")
 	private WebElement searchBtn;
+	
+	@FindBy(id="invalid-state")
+	private WebElement invalidState;
+	
+	@FindBy(id="invalid-city")
+	private WebElement invalidCity;
+	
+	@FindBy(id="invalid-check_in")
+	private WebElement invalidCheckInDate;
+	
+	@FindBy(id="invalid-check_out")
+	private WebElement invalidCheckoutDate;
+	
+	@FindBy(id="invalid-no_rooms")
+	private WebElement invalidRoom;
+	
+	@FindBy(id="invalid-no_adults")
+	private WebElement invalidAdults;
+	
+	public WebElement getInvalidState() {
+		return invalidState;
+	}
+
+	public WebElement getInvalidCity() {
+		return invalidCity;
+	}
+
+	public WebElement getInvalidCheckInDate() {
+		return invalidCheckInDate;
+	}
+
+	public WebElement getInvalidCheckoutDate() {
+		return invalidCheckoutDate;
+	}
+
+	public WebElement getInvalidRoom() {
+		return invalidRoom;
+	}
+
+	public WebElement getInvalidAdults() {
+		return invalidAdults;
+	}
 
 	public WebElement getVerifyAccount() {
 		return verifyAccount;
@@ -63,11 +105,11 @@ public class SearchHotelPage extends BaseClass {
 	}
 
 	public WebElement getCheckInDate() {
-		return checkInDate;
+		return check_InDate;
 	}
 
 	public WebElement getCheckOutDate() {
-		return checkOutDate;
+		return check_OutDate;
 	}
 
 	public WebElement getRoomCount() {
@@ -90,5 +132,82 @@ public class SearchHotelPage extends BaseClass {
 		return searchBtn;
 	}
 	
+	//Then User should verify success message after login "Welcome Prasanna"
+	
+	public String loginSuccessMsgText() {
+		
+		String loginSuccessMsgText = elementGetText(verifyAccount);
+		System.out.println(loginSuccessMsgText);
+		return loginSuccessMsgText;
+	}
+	
+	//When User search hotel "<state>","<city>","<roomType>","<checkIn>","<check-out>","<No of Room>","<No of Adults>" and "<No of Childs>"
+	public void searchHotels(String stateName,String cityName,String roomType,String checkInDate,
+			String checkOutDate,String noOfRoom,String noOfAdults,String noOfChild) throws InterruptedException {
+		
+		selectOptionByText(hotelState, stateName);
+		Thread.sleep(2000);
+		selectOptionByText(hotelCity, cityName);
+		selectOptionByText(hotelRoomType, roomType);
+		elementSendKeysJs(check_InDate, checkInDate);
+		elementSendKeysJs(check_OutDate, checkOutDate);
+		selectOptionByText(roomCount,noOfRoom);
+		selectOptionByText(adultsCount, noOfAdults);
+		elementSendKeys(childCount, noOfChild);
+		switchToFrameByWebElement(SwitchFrame);
+		elementClick(searchBtn);
+		defaultFrame();
+	}
+	public void searchHotelWithMandatory(String stateName,String cityName,String checkInDate,
+			String checkOutDate,String noOfRoom,String noOfAdults) throws InterruptedException {
+		
+		selectOptionByText(hotelState, stateName);
+		Thread.sleep(2000);
+		selectOptionByText(hotelCity, cityName);
+		elementSendKeysJs(check_InDate, checkInDate);
+		elementSendKeysJs(check_OutDate, checkOutDate);
+		selectOptionByText(roomCount,noOfRoom);
+		selectOptionByText(adultsCount, noOfAdults);
+		switchToFrameByWebElement(SwitchFrame);
+		elementClick(searchBtn);
+		defaultFrame();
+		
+	}
+	public void clickSearchButton() {
+		switchToFrameByWebElement(SwitchFrame);
+		elementClick(searchBtn);
+		defaultFrame();
+	}
+	
+	public String stateErrorMsgText() {
+		String stateErrorMsg = elementGetText(invalidState);
+		System.out.println(stateErrorMsg);
+		return stateErrorMsg;
+	}
+	public String cityErrorMsgText() {
+		String cityErrorMsg = elementGetText(invalidCity);
+		System.out.println(cityErrorMsg);
+		return cityErrorMsg;
+	}
+	public String checkInErrorMsgText() {
+		String checkInErrorMsg = elementGetText(invalidCheckInDate);
+		System.out.println(checkInErrorMsg);
+		return checkInErrorMsg;
+	}
+	public String checkOutErrorMsgText() {
+		String checkOutErrorMsg = elementGetText(invalidCheckoutDate);
+		System.out.println(checkOutErrorMsg);
+		return checkOutErrorMsg;
+	}
+	public String roomErrorMsgText() {
+		String roomErrorMsg = elementGetText(invalidRoom);
+		System.out.println(roomErrorMsg);
+		return roomErrorMsg;
+	}
+	public String adultErrorMsgText() {
+		String adultErrorMsg = elementGetText(invalidAdults);
+		System.out.println(adultErrorMsg);
+		return adultErrorMsg;
+	}
 
 }

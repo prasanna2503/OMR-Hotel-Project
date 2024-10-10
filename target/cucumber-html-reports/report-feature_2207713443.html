@@ -41,7 +41,7 @@ $(document).ready(function() {
 
 
 
-<title>Cucumber Reports  - Tag: @Login</title>
+<title>Cucumber Reports  - Feature: Verifying Search Hotel Module</title>
 
 </head>
 <body>
@@ -74,7 +74,7 @@ $(document).ready(function() {
   <tbody>
     <tr class="info">
       <td>Facebook Automation</td>
-      <td>09 Oct 2024, 14:03</td>
+      <td>10 Oct 2024, 22:04</td>
     </tr>
   </tbody>
 </table>
@@ -87,7 +87,7 @@ $(document).ready(function() {
 
 <div id="report-lead" class="container-fluid">
   <div class="col-md-10 col-md-offset-1">
-    <h2>Tag Report</h2>
+    <h2>Feature Report</h2>
   </div>
 </div>
 
@@ -106,7 +106,7 @@ $(document).ready(function() {
     <th colspan="2">Features</th>
   </tr>
   <tr>
-    <th>Tag</th>
+    <th>Feature</th>
     <th class="passed">Passed</th>
     <th class="failed">Failed</th>
     <th class="skipped">Skipped</th>
@@ -126,19 +126,19 @@ $(document).ready(function() {
 
         <tbody>
         <tr>
-          <td class="tagname">@Login</td>
-          <td      class="passed"    >9</td>
+          <td class="tagname">Verifying Search Hotel Module</td>
+          <td      class="passed"    >14</td>
           <td >0</td>
           <td >0</td>
           <td >0</td>
           <td >0</td>
-          <td class="total">9</td>
+          <td class="total">14</td>
 
-          <td  class="passed"    >3</td>
+          <td  class="passed"    >2</td>
           <td >0</td>
-          <td class="total">3</td>
+          <td class="total">2</td>
 
-          <td class="duration" data-value="17181808400">17.181</td>
+          <td class="duration" data-value="38999363900">38.999</td>
           <td class="passed">Passed</td>
         </tr>
         </tbody>
@@ -165,30 +165,40 @@ $(document).ready(function() {
 <div class="container-fluid" id="report">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <div class="elements">
+      <div class="feature">
 
+<div class="tags indention">
+</div>
+
+
+<div class="brief passed">
+  <span class="keyword indention">Feature</span>
+  <span class="name">Verifying Search Hotel Module</span>
+
+
+</div>
+
+        <div class="description indention"></div>
+
+        <div class="elements inner-level">
 
 <div class="element">
-    <div class="indention">
-      <b>Feature:</b>
-      <a href="report-feature_2285719519.html">Verifying OMRBranch Hotel Login Module</a>
-    </div>
 
 
 <div class="tags indention">
     <b>Tags:</b>
-       <a href="report-tag_4053346056.html">@Login</a>
+       <a href="report-tag_1290674695.html">@Search</a>
 </div>
 
 
-  <span class="lead-duration duration">6.472</span>
+  <span class="lead-duration duration">22.266</span>
 
 
   <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-1">
 
 <div class="brief passed">
   <span class="keyword indention">Scenario Outline</span>
-  <span class="name">Verifying login with valid credentials without&nbsp;Enter Key</span>
+  <span class="name">Search hotels with all fields and verify the hotel price sorting from low to high</span>
 
 
      <i class="chevron fa fa-fw"></i>
@@ -224,7 +234,7 @@ $(document).ready(function() {
   <span class="keyword indention">Given</span>
   <span class="name">User is on the OMR Branch hotel page</span>
 
-  <span class="lead-duration duration">3.548</span>
+  <span class="lead-duration duration">5.527</span>
 
 </div>
 
@@ -251,7 +261,7 @@ $(document).ready(function() {
   <span class="keyword indention">When</span>
   <span class="name">User login <span class="argument">&quot;kprasanna2406@gmail.com&quot;</span> and <span class="argument">&quot;Lovely@0612&quot;</span></span>
 
-  <span class="lead-duration duration">0.604</span>
+  <span class="lead-duration duration">1.368</span>
 
 </div>
 
@@ -278,7 +288,115 @@ $(document).ready(function() {
   <span class="keyword indention">Then</span>
   <span class="name">User should verify success message after login <span class="argument">&quot;Welcome Prasanna&quot;</span></span>
 
-  <span class="lead-duration duration">2.318</span>
+  <span class="lead-duration duration">5.320</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-When passed">
+  <span class="keyword indention">When</span>
+  <span class="name">User search hotel <span class="argument">&quot;Tamil Nadu&quot;</span>,<span class="argument">&quot;Chennai&quot;</span>,<span class="argument">&quot;Standard&quot;</span>,<span class="argument">&quot;2024-10-13&quot;</span>,<span class="argument">&quot;2024-10-15&quot;</span>,<span class="argument">&quot;1-One&quot;</span>,<span class="argument">&quot;2-Two&quot;</span> and <span class="argument">&quot;2&quot;</span></span>
+
+  <span class="lead-duration duration">7.464</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-Then passed">
+  <span class="keyword indention">Then</span>
+  <span class="name">User should verify after search hotel success message <span class="argument">&quot;Select Hotel&quot;</span></span>
+
+  <span class="lead-duration duration">0.127</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-When passed">
+  <span class="keyword indention">When</span>
+  <span class="name">User click sort from low to high</span>
+
+  <span class="lead-duration duration">2.308</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-Then passed">
+  <span class="keyword indention">Then</span>
+  <span class="name">User should verify after sorting that price are listed from low to high</span>
+
+  <span class="lead-duration duration">0.150</span>
 
 </div>
 
@@ -310,26 +428,22 @@ $(document).ready(function() {
 
 
 <div class="element">
-    <div class="indention">
-      <b>Feature:</b>
-      <a href="report-feature_2285719519.html">Verifying OMRBranch Hotel Login Module</a>
-    </div>
 
 
 <div class="tags indention">
     <b>Tags:</b>
-       <a href="report-tag_4053346056.html">@Login</a>
+       <a href="report-tag_1290674695.html">@Search</a>
 </div>
 
 
-  <span class="lead-duration duration">6.334</span>
+  <span class="lead-duration duration">16.732</span>
 
 
   <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-3">
 
 <div class="brief passed">
   <span class="keyword indention">Scenario Outline</span>
-  <span class="name">Verifying login with valid credentials with&nbsp;Enter Key using Robot Class</span>
+  <span class="name">Search hotels with all fields and verify the hotel name in Descending order</span>
 
 
      <i class="chevron fa fa-fw"></i>
@@ -365,7 +479,7 @@ $(document).ready(function() {
   <span class="keyword indention">Given</span>
   <span class="name">User is on the OMR Branch hotel page</span>
 
-  <span class="lead-duration duration">3.105</span>
+  <span class="lead-duration duration">4.264</span>
 
 </div>
 
@@ -390,9 +504,9 @@ $(document).ready(function() {
 
 <div class="brief step-name-When passed">
   <span class="keyword indention">When</span>
-  <span class="name">User login <span class="argument">&quot;kprasanna2406@gmail.com&quot;</span> and <span class="argument">&quot;Lovely@0612&quot;</span> with enter key</span>
+  <span class="name">User login <span class="argument">&quot;kprasanna2406@gmail.com&quot;</span> and <span class="argument">&quot;Lovely@0612&quot;</span></span>
 
-  <span class="lead-duration duration">0.473</span>
+  <span class="lead-duration duration">0.944</span>
 
 </div>
 
@@ -419,94 +533,7 @@ $(document).ready(function() {
   <span class="keyword indention">Then</span>
   <span class="name">User should verify success message after login <span class="argument">&quot;Welcome Prasanna&quot;</span></span>
 
-  <span class="lead-duration duration">2.755</span>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </div>
-  </div>
-</div>
-
-
-
-
-
-  </div>
-</div>
-
-
-<div class="element">
-    <div class="indention">
-      <b>Feature:</b>
-      <a href="report-feature_2285719519.html">Verifying OMRBranch Hotel Login Module</a>
-    </div>
-
-
-<div class="tags indention">
-    <b>Tags:</b>
-       <a href="report-tag_4053346056.html">@Login</a>
-</div>
-
-
-  <span class="lead-duration duration">4.375</span>
-
-
-  <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-5">
-
-<div class="brief passed">
-  <span class="keyword indention">Scenario Outline</span>
-  <span class="name">Verifying login with invalid credentials</span>
-
-
-     <i class="chevron fa fa-fw"></i>
-</div>
-
-  </span>
-  <div class="description indention"></div>
-
-  <div id="element-5" class="collapse collapsable-details ">
-
-
-
-
-
-<div class="steps inner-level">
-  <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-6">
-
-<div class="brief passed">
-  <span class="keyword indention">Steps</span>
-  <span class="name"></span>
-
-
-     <i class="chevron fa fa-fw"></i>
-</div>
-
-  </div>
-
-  <div id="steps-6" class="inner-level collapse collapsable-details ">
-      <div class="step">
-
-
-<div class="brief step-name-Given passed">
-  <span class="keyword indention">Given</span>
-  <span class="name">User is on the OMR Branch hotel page</span>
-
-  <span class="lead-duration duration">3.164</span>
+  <span class="lead-duration duration">4.718</span>
 
 </div>
 
@@ -531,9 +558,9 @@ $(document).ready(function() {
 
 <div class="brief step-name-When passed">
   <span class="keyword indention">When</span>
-  <span class="name">User login <span class="argument">&quot;kprasanna2406@gmail.com&quot;</span> and <span class="argument">&quot;Lovely@0613&quot;</span></span>
+  <span class="name">User search hotel <span class="argument">&quot;Tamil Nadu&quot;</span>,<span class="argument">&quot;Chennai&quot;</span>,<span class="argument">&quot;Deluxe&quot;</span>,<span class="argument">&quot;2024-10-13&quot;</span>,<span class="argument">&quot;2024-10-15&quot;</span>,<span class="argument">&quot;1-One&quot;</span>,<span class="argument">&quot;2-Two&quot;</span> and <span class="argument">&quot;2&quot;</span></span>
 
-  <span class="lead-duration duration">0.629</span>
+  <span class="lead-duration duration">6.125</span>
 
 </div>
 
@@ -558,9 +585,63 @@ $(document).ready(function() {
 
 <div class="brief step-name-Then passed">
   <span class="keyword indention">Then</span>
-  <span class="name">User should verify error message after login <span class="argument">&quot;Invalid Login details or Your Password might have expired.&quot;</span></span>
+  <span class="name">User should verify after search hotel success message <span class="argument">&quot;Select Hotel&quot;</span></span>
 
-  <span class="lead-duration duration">0.581</span>
+  <span class="lead-duration duration">0.083</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-When passed">
+  <span class="keyword indention">When</span>
+  <span class="name">User click sort from Descending order</span>
+
+  <span class="lead-duration duration">0.352</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-Then passed">
+  <span class="keyword indention">Then</span>
+  <span class="name">User should verify after sorting that name in Descending order</span>
+
+  <span class="lead-duration duration">0.243</span>
 
 </div>
 
@@ -590,6 +671,7 @@ $(document).ready(function() {
   </div>
 </div>
 
+        </div>
 
       </div>
     </div>

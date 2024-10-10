@@ -4,10 +4,13 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
@@ -19,12 +22,15 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseClass {
-	
 	public static WebDriver driver;
 	Select select;
 
@@ -79,7 +85,7 @@ public class BaseClass {
 		}
 	}
 
-	public String getProjectPath() {
+	public static String getProjectPath() {
 		String property = System.getProperty("user.dir");
 		return property;
 	}
@@ -103,6 +109,20 @@ public class BaseClass {
 
 	}
 
+	public String getPropertyFileValue(String key) throws FileNotFoundException, IOException {
+		Properties properties = new Properties();
+		properties.load(new FileInputStream(getProjectPath() + "\\Config\\config.properties"));
+
+		Object object = properties.get(key);
+		String value = (String) object;
+		return value;
+	}
+
+	public String getProjectPath2() {
+		String path = System.getProperty("user.dir");
+		return path;
+	}
+
 	public void elementVisibility(WebElement element) {
 		WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		driverWait.until(ExpectedConditions.visibilityOf(element));
@@ -117,8 +137,31 @@ public class BaseClass {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 	}
 
-	public static void browserLaunch() {
-		driver = new ChromeDriver();
+// public static void browserLaunch() {
+// driver = new ChromeDriver();
+// }
+	public static void browserLaunch(String browserType) {
+		switch (browserType) {
+		case "CHROME":
+			driver = new ChromeDriver();
+			break;
+		case "FIREFOX":
+			driver = new FirefoxDriver();
+			break;
+		case "IE":
+			driver = new InternetExplorerDriver();
+			break;
+		case "EDGE":
+			driver = new EdgeDriver();
+			break;
+		case "SAFARI":
+			driver = new SafariDriver();
+			break;
+
+		default:
+			break;
+		}
+
 	}
 
 	public static void enterApplnUrl(String url) {
@@ -212,7 +255,7 @@ public class BaseClass {
 		return text;
 	}
 
-	// 99%--->value fixed
+// 99%--->value fixed
 	public String elementGetAttributeValue(WebElement element) {
 		elementVisibility(element);
 		String attribute = null;
@@ -223,7 +266,7 @@ public class BaseClass {
 
 	}
 
-	// 1%--->value is NOT fixed
+// 1%--->value is NOT fixed
 	public String elementGetAttributeValue(WebElement element, String attributeName) {
 		elementVisibility(element);
 		String attribute = null;
@@ -251,4 +294,12 @@ public class BaseClass {
 		select = new Select(element);
 		select.selectByIndex(index);
 	}
+	
+	public void switchToFrameByWebElement(WebElement element) {
+		driver.switchTo().frame(element);
+	}
+	public void defaultFrame() {
+		driver.switchTo().defaultContent();
+	}
+
 }

@@ -1,3 +1,4 @@
+@Login 
 Feature: Verifying OMRBranch Hotel Login Module
 
 
@@ -19,7 +20,8 @@ Feature: Verifying OMRBranch Hotel Login Module
     Examples: 
       | userName                | password    |
       | kprasanna2406@gmail.com | Lovely@0612 |
-@Login
+
+ 
   Scenario Outline: Verifying login with invalid credentials
     Given User is on the OMR Branch hotel page
     When User login "<userName>" and "<password>"
@@ -27,4 +29,4 @@ Feature: Verifying OMRBranch Hotel Login Module
 
     Examples: 
       | userName                | password    |
-      | kprasanna2406@gmail.com | Lovely@0612 |
+      | kprasanna2406@gmail.com | Lovely@0613 |
