@@ -295,6 +295,12 @@ public class BaseClass {
 		select.selectByIndex(index);
 	}
 	
+	public void deselectAllOption(WebElement element) {
+		elementVisibility(element);
+		select = new Select(element);
+		select.deselectAll();
+	}
+	
 	public void switchToFrameByWebElement(WebElement element) {
 		driver.switchTo().frame(element);
 	}

@@ -87,7 +87,7 @@ public class TC2_SearchHotelStep {
 	
 
 	@When("User click sort from Descending order")
-	public void clickSortDescendingOrder() {
+	public void clickSortDescendingOrder() throws InterruptedException {
 		pom.getSelectHotelPage().clickDescendingOrder();
 	}
 	
@@ -98,15 +98,20 @@ public class TC2_SearchHotelStep {
 	
 
 	@When("User click Suite room type")
-	public void user_click_suite_room_type() {
+	public void user_click_suite_room_type() throws InterruptedException {
+		pom.getSelectHotelPage().clickSuiteCheckBox();
+		
 	}
 	
 	@Then("User should verify after sorting that Suite room type is listed")
 	public void user_should_verify_after_sorting_that_suite_room_type_is_listed() {
+		pom.getSelectHotelPage().afterSortingHotelList();
 	}
 	
 	@Then("User should verify the header contains {string}")
-	public void user_should_verify_the_header_contains(String string) {
+	public void user_should_verify_the_header_contains(String expAllRoomTypeText) {
+		String actAllRoomTypeText = pom.getSelectHotelPage().allRoomType();
+		Assert.assertEquals("User should verify the header contains All Room Type", expAllRoomTypeText, actAllRoomTypeText);
 	}
 
 

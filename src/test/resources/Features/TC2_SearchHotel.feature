@@ -33,7 +33,6 @@ Feature: Verifying Search Hotel Module
       | userName                | password    |
       | kprasanna2406@gmail.com | Lovely@0612 |
 
-  @Search
   Scenario Outline: Search hotels with all fields and verify the hotel price sorting from low to high
     Given User is on the OMR Branch hotel page
     When User login "<userName>" and "<password>"
@@ -45,8 +44,8 @@ Feature: Verifying Search Hotel Module
 
     Examples: 
       | userName                | password    | state      | city    | roomType | checkIn    | check-out  | No of Room | No of Adults | No of Childs |
-      | kprasanna2406@gmail.com | Lovely@0612 | Tamil Nadu | Chennai | Standard | 2024-10-13 | 2024-10-15 | 1-One      | 2-Two        |            2 |
-  @Search
+      | kprasanna2406@gmail.com | Lovely@0612 | Tamil Nadu | Chennai | Deluxe   | 2024-10-13 | 2024-10-15 | 1-One      | 2-Two        |            2 |
+
   Scenario Outline: Search hotels with all fields and verify the hotel name in Descending order
     Given User is on the OMR Branch hotel page
     When User login "<userName>" and "<password>"
@@ -58,8 +57,8 @@ Feature: Verifying Search Hotel Module
 
     Examples: 
       | userName                | password    | state      | city    | roomType | checkIn    | check-out  | No of Room | No of Adults | No of Childs |
-      | kprasanna2406@gmail.com | Lovely@0612 | Tamil Nadu | Chennai | Deluxe   | 2024-10-13 | 2024-10-15 | 1-One      | 2-Two        |            2 |
-
+      | kprasanna2406@gmail.com | Lovely@0612 | Tamil Nadu | Chennai | Luxury   | 2024-10-12 | 2024-10-27 | 2-Two      | 2-Two        |            2 |
+ @Search
   Scenario Outline: Search hotel with all fields and verify the Suite room type are listed
     Given User is on the OMR Branch hotel page
     When User login "<userName>" and "<password>"
@@ -67,11 +66,12 @@ Feature: Verifying Search Hotel Module
     When User search hotel "<state>","<city>","<roomType>","<checkIn>","<check-out>","<No of Room>","<No of Adults>" and "<No of Childs>"
     Then User should verify after search hotel success message "Select Hotel"
     When User click Suite room type
-    Then User should verify after sorting that Suite room type is listed
+    Then User should verify after sorting that Suite room type is listed 
 
     Examples: 
       | userName                | password    | state      | city    | roomType | checkIn    | check-out  | No of Room | No of Adults | No of Childs |
       | kprasanna2406@gmail.com | Lovely@0612 | Tamil Nadu | Chennai | Deluxe   | 2024-10-13 | 2024-10-15 | 1-One      | 2-Two        |            2 |
+
 
   Scenario Outline: Search hotels with all fields and select all room type verify the header
     Given User is on the OMR Branch hotel page
@@ -82,5 +82,5 @@ Feature: Verifying Search Hotel Module
     And User should verify the header contains "<roomType>"
 
     Examples: 
-      | userName                | password    | state      | city    | roomType | checkIn    | check-out  | No of Room | No of Adults | No of Childs |
-      | kprasanna2406@gmail.com | Lovely@0612 | Tamil Nadu | Chennai | Deluxe   | 2024-10-13 | 2024-10-15 | 1-One      | 2-Two        |            2 |
+      | userName                | password    | state      | city    | roomType                            | checkIn    | check-out  | No of Room | No of Adults | No of Childs |
+      | kprasanna2406@gmail.com | Lovely@0612 | Tamil Nadu | Chennai | Standard/Deluxe/Suite/Luxury/Studio | 2024-10-13 | 2024-10-15 | 1-One      | 2-Two        |            2 |

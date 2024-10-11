@@ -141,6 +141,13 @@ public class SearchHotelPage extends BaseClass {
 		return loginSuccessMsgText;
 	}
 	
+	public void selectRoomtype(String roomType) {
+		String[] split = roomType.split("/");
+		for (String v : split) {
+			selectOptionByText(hotelRoomType, v);
+		}
+	}
+	
 	//When User search hotel "<state>","<city>","<roomType>","<checkIn>","<check-out>","<No of Room>","<No of Adults>" and "<No of Childs>"
 	public void searchHotels(String stateName,String cityName,String roomType,String checkInDate,
 			String checkOutDate,String noOfRoom,String noOfAdults,String noOfChild) throws InterruptedException {
@@ -148,7 +155,8 @@ public class SearchHotelPage extends BaseClass {
 		selectOptionByText(hotelState, stateName);
 		Thread.sleep(2000);
 		selectOptionByText(hotelCity, cityName);
-		selectOptionByText(hotelRoomType, roomType);
+		selectRoomtype(roomType);
+		//selectOptionByText(hotelRoomType, roomType);
 		elementSendKeysJs(check_InDate, checkInDate);
 		elementSendKeysJs(check_OutDate, checkOutDate);
 		selectOptionByText(roomCount,noOfRoom);
@@ -209,5 +217,6 @@ public class SearchHotelPage extends BaseClass {
 		System.out.println(adultErrorMsg);
 		return adultErrorMsg;
 	}
+	
 
 }

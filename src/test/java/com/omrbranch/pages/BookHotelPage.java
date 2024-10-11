@@ -181,5 +181,15 @@ public class BookHotelPage extends BaseClass {
 		return submitBtn;
 	}
 	
+	public String bookHotelText() {
+		String HotelNameText = elementGetText(bookingHotelName);
+//		String[] bookHotelText = HotelNameText.split("-");
+//		if (bookHotelText.equals("Book Hotel")) {
+//			System.out.println(bookHotelText);
+//		}
+		System.out.println(HotelNameText);
+		return HotelNameText;
+	}
+	
 	
 }

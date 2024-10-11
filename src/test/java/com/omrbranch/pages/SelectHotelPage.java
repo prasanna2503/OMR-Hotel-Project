@@ -1,6 +1,7 @@
 package com.omrbranch.pages;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,6 +17,9 @@ public class SelectHotelPage extends BaseClass {
 
 		PageFactory.initElements(driver, this);
 	}
+	
+	public static String lastHotelNameText;
+	public static String lastPrice;
 
 	@FindBy(className = "explore-hotels")
 	private WebElement exploreHotels;
@@ -37,6 +41,27 @@ public class SelectHotelPage extends BaseClass {
 	
 	@FindBy(xpath="//label[text()='Name Descending']")
 	private WebElement DescendingOrder;
+	
+	@FindBy(id="room_type")
+	private WebElement roomTypeList;
+	
+	@FindBy(xpath = "//label[text()='Deluxe']")
+	private WebElement deluxeCheckBox;
+	
+	@FindBy(xpath = "//label[text()='Suite']")
+	private WebElement suiteCheckBox;
+	
+	public WebElement getRoomTypeList() {
+		return roomTypeList;
+	}
+
+	public WebElement getDeluxeCheckBox() {
+		return deluxeCheckBox;
+	}
+
+	public WebElement getSuiteCheckBox() {
+		return suiteCheckBox;
+	}
 
 	public WebElement getDescendingOrder() {
 		return DescendingOrder;
@@ -78,7 +103,8 @@ public class SelectHotelPage extends BaseClass {
 		Thread.sleep(2000);
 	}
 	
-	public void clickDescendingOrder() {
+	public void clickDescendingOrder() throws InterruptedException {
+		Thread.sleep(2000);
 		elementClick(DescendingOrder);
 	}
 	
@@ -87,6 +113,7 @@ public class SelectHotelPage extends BaseClass {
 		List<Integer> testerPriceList = new ArrayList<>();
 		for (WebElement price : allHotelPrices) {
 			String eachHotelPrice = elementGetText(price);
+			System.out.println(eachHotelPrice);
 			String substring = eachHotelPrice.substring(1, 7);
 			String replaceSpace = substring.replace(" ", "");
 			String replaceComma = replaceSpace.replace(",", "");
@@ -126,5 +153,58 @@ public class SelectHotelPage extends BaseClass {
 			System.out.println("All Hotel Names are Not in Descending Order");
 		}
 	}
+	
+	public String allRoomType() {
+		String roomTypeHeader = elementGetText(roomTypeList);
+		System.out.println(roomTypeHeader);
+		return roomTypeHeader;
+	}
+	
+	public void clickSuiteCheckBox() throws InterruptedException {
+		elementClick(deluxeCheckBox);
+		elementClick(suiteCheckBox);
+		Thread.sleep(3000);
+	}
+	
+	public void afterSortingHotelList() {
+		List<Boolean> res = new ArrayList<>();
+		List<String> devSuiteHotels = new ArrayList<>();
+		for (WebElement eachHotel : allHotelNames) {
+			String eachHotelList = elementGetText(eachHotel);
+		//	System.out.println(eachHotelList);
+			devSuiteHotels.add(eachHotelList);
+		}
+		//System.out.println(devSuiteHotels);
+		for (String text : devSuiteHotels) {
+			boolean e = text.endsWith("Suite");
+			res.add(e);
+		}
+	//	System.out.println(res);
+		boolean compareHotels = res.contains(false);
+		if (compareHotels) {
+			System.out.println("All Hotels are Not Suite Type");
+		} else {
+			System.out.println("All Hotels are Suite Type ");
+		}
+		
+	}
+	
+	public void selectLastHotelNameAndPrice() {
+		int size = allHotelNames.size();
+		WebElement lastHotelName = allHotelNames.get(size-1);
+		lastHotelNameText = elementGetText(lastHotelName);
+		
+		int priceSize = allHotelPrices.size();
+		WebElement lastHotelPrice = allHotelPrices.get(size-1);
+		lastPrice = elementGetText(lastHotelPrice);
+	}
+	
+	public void selectLastHotel() {
+		int allContinueBtnCount = allContinueBtn.size();
+		WebElement lastContinueBtn = allContinueBtn.get(allContinueBtnCount-1);
+		elementClick(lastContinueBtn);
+		acceptAlert();
+	}
+	
 	
 }
