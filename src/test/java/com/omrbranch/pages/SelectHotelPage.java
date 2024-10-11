@@ -20,6 +20,10 @@ public class SelectHotelPage extends BaseClass {
 	
 	public static String lastHotelNameText;
 	public static String lastPrice;
+	public static String lastSecondtHotelNameText;
+	public static String lastSecondHotelPrice;
+	public static String firstHotelNameText;
+	public static String firstHotelPriceText;
 
 	@FindBy(className = "explore-hotels")
 	private WebElement exploreHotels;
@@ -94,7 +98,6 @@ public class SelectHotelPage extends BaseClass {
 	public String selectHotelText() {
 
 		String selectHotelText = elementGetText(hotelText);
-		System.out.println(selectHotelText);
 		return selectHotelText;
 	}
 	
@@ -156,7 +159,6 @@ public class SelectHotelPage extends BaseClass {
 	
 	public String allRoomType() {
 		String roomTypeHeader = elementGetText(roomTypeList);
-		System.out.println(roomTypeHeader);
 		return roomTypeHeader;
 	}
 	
@@ -189,7 +191,7 @@ public class SelectHotelPage extends BaseClass {
 		
 	}
 	
-	public void selectLastHotelNameAndPrice() {
+	public void saveLastHotelNameAndPrice() {
 		int size = allHotelNames.size();
 		WebElement lastHotelName = allHotelNames.get(size-1);
 		lastHotelNameText = elementGetText(lastHotelName);
@@ -206,5 +208,37 @@ public class SelectHotelPage extends BaseClass {
 		acceptAlert();
 	}
 	
+	public void saveLastSecondHotelNameAndPrice() {
+		int size = allHotelNames.size();
+		WebElement secondLastHotelName = allHotelNames.get(size-2);
+		lastSecondtHotelNameText = elementGetText(secondLastHotelName);
+		
+		int priceSize = allHotelPrices.size();
+		WebElement lastHotelPrice = allHotelPrices.get(size-2);
+		lastSecondHotelPrice = elementGetText(lastHotelPrice);
+	}
+	
+	public void selectSecondLastHotel() {
+		int allContinueBtnCountSize = allContinueBtn.size();
+		WebElement lastSecondContinueBtn = allContinueBtn.get(allContinueBtnCountSize-2);
+		elementClick(lastSecondContinueBtn);
+		acceptAlert();
+	}
+	
+	public void saveFirstHotelNameAndPrice() {
+		//int size = allHotelNames.size();
+		WebElement firstHotelName = allHotelNames.get(0);
+		firstHotelNameText = elementGetText(firstHotelName);
+		
+		//int size2 = allHotelPrices.size();
+		WebElement firstHotelPrice = allHotelPrices.get(0);
+		firstHotelPriceText = elementGetText(firstHotelPrice);
+	}
+	
+	public void selectFirstHotel() {
+		WebElement firstHotelContinueBtn = allContinueBtn.get(0);
+		elementClick(firstHotelContinueBtn);
+		acceptAlert();
+	}
 	
 }

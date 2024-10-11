@@ -15,7 +15,7 @@ public class TC3_SelectHotelStep {
 
 	@When("User save the last hotel name and hotel price")
 	public void saveLastHotelAndPrice() {
-		pom.getSelectHotelPage().selectLastHotelNameAndPrice();
+		pom.getSelectHotelPage().saveLastHotelNameAndPrice();
 	}
 	
 	@When("User select the last hotel and accept the alert")
@@ -24,26 +24,31 @@ public class TC3_SelectHotelStep {
 	}
 	
 	@Then("User should verify after select success message {string}")
-	public void user_should_verify_after_select_success_message(String expHotelNameText) {
+	public void vefirySelectSuccessMsg(String expHotelNameText) {
 		String actHotelNameText = pom.getBookHotelPage().bookHotelText();
 		boolean contains = actHotelNameText.contains(expHotelNameText);
 		Assert.assertTrue(contains);
+		System.out.println(actHotelNameText);
 	}
 
 	@When("User save the second from last hotel name and hotel price")
-	public void user_save_the_second_from_last_hotel_name_and_hotel_price() {
+	public void saveSecondHotelAndPriceFromLast() {
+		pom.getSelectHotelPage().saveLastSecondHotelNameAndPrice();
 	}
 	
 	@When("User select the second from last hotel and accept the alert")
-	public void user_select_the_second_from_last_hotel_and_accept_the_alert() {
+	public void selectSecondLastHotelAcceptAlert() {
+		pom.getSelectHotelPage().selectSecondLastHotel();
 	}
 
 	@When("User save the first hotel name and hotel price")
-	public void user_save_the_first_hotel_name_and_hotel_price() {
+	public void saveFirsHotelNameAndPrice() {
+		pom.getSelectHotelPage().saveFirstHotelNameAndPrice();
 	}
 	
 	@When("User select the first hotel and accept the alert")
-	public void user_select_the_first_hotel_and_accept_the_alert() {
+	public void selectFirstHotelAndAcceptAlert() {
+		pom.getSelectHotelPage().selectFirstHotel();
 	}
 
 

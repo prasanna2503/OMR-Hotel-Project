@@ -62,9 +62,8 @@ public class LoginPage extends BaseClass {
 	
 	public String loginInvalidMsgText() {
 		String loginErrorMsgText = elementGetText(errorMsgText);
-		String replace = loginErrorMsgText.replace("Click here to reset your password", "");
-		System.out.println(replace);
-		return loginErrorMsgText;
+		String loginErrorMsg = loginErrorMsgText.replace("Click here to reset your password", "");
+		return loginErrorMsg;
 	}
 }
 

@@ -34,8 +34,8 @@ public class TC1_LoginStep extends BaseClass {
 	@Then("User should verify success message after login {string}")
 	public void user_should_verify_success_message_after_login(String expLoginSuccessMsgTxt) {
 		String actualLoginSuccessMsgText = pom.getSearchHotelPage().loginSuccessMsgText();
-
 		Assert.assertEquals("verify after login success msg", expLoginSuccessMsgTxt, actualLoginSuccessMsgText);
+		System.out.println(actualLoginSuccessMsgText);
 
 	}
 
@@ -49,6 +49,7 @@ public class TC1_LoginStep extends BaseClass {
 		String actinvalidMsgText = pom.getLoginPage().loginInvalidMsgText();
 		boolean contains = actinvalidMsgText.contains(expLoginErrorMsgTxt);
 		Assert.assertTrue(contains);
+		System.out.println(actinvalidMsgText);
 	}
 
 }

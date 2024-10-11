@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
 import omr.branch.report.Reporting;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(tags=("@Select"),dryRun = false, plugin = { "pretty","json:target//output.json" },
+@CucumberOptions(tags=("@Search"),dryRun = false, plugin = { "pretty","json:target//output.json" },
 							glue="com.omrbranch.stepdefinition", features="src\\test\\resources")
 
 public class TestRunnerClass extends BaseClass {

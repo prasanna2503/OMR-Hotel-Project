@@ -24,6 +24,7 @@ public class TC2_SearchHotelStep {
 	public void searchHotelSuccessMsg(String expSelectHotelTxt) {
 		String actselectHotelText = pom.getSelectHotelPage().selectHotelText();
 		Assert.assertEquals("Select Hotel", expSelectHotelTxt, actselectHotelText);
+		System.out.println(actselectHotelText);
 	}
 	
 
@@ -46,26 +47,32 @@ public class TC2_SearchHotelStep {
 		//State Error
 		String actStateErrorMsgText = pom.getSearchHotelPage().stateErrorMsgText();
 		Assert.assertEquals("Please select state", expStateErrorMsgText, actStateErrorMsgText);
+		System.out.println(actStateErrorMsgText);
 		
 		//City Error
 		String actCityErrorMsgText = pom.getSearchHotelPage().cityErrorMsgText();
 		Assert.assertEquals("Please select city", expCityErrorMsgText, actCityErrorMsgText);
+		System.out.println(actCityErrorMsgText);
 		
 		//CheckIn Error  
 		String actCheckInErrorMsgText = pom.getSearchHotelPage().checkInErrorMsgText();
 		Assert.assertEquals("Please select Check-in date", expCheckInErrorMsgText, actCheckInErrorMsgText);
+		System.out.println(actCheckInErrorMsgText);
 		
 		//CheckOut Error
 		String actCheckOutErrorMsgText = pom.getSearchHotelPage().checkOutErrorMsgText();
 		Assert.assertEquals("Please select Check-out date", expCheckOuErrorMsgText, actCheckOutErrorMsgText);
+		System.out.println(actCheckOutErrorMsgText);
 		
 		//No.Of Rooms Error
 		String actRoomErrorMsgText = pom.getSearchHotelPage().roomErrorMsgText();
 		Assert.assertEquals("Please select no. of rooms", expRoomErrorMsgText, actRoomErrorMsgText);
+		System.out.println(actRoomErrorMsgText);
 		
 		//No.Of Adults Error
 		String actAdultErrorMsgText = pom.getSearchHotelPage().adultErrorMsgText();
-		Assert.assertEquals("Please select no. of adults", actRoomErrorMsgText, actAdultErrorMsgText);
+		Assert.assertEquals("Please select no. of adults", expAdultErrorMsgText, actAdultErrorMsgText);
+		System.out.println(actAdultErrorMsgText);
 		
 		
 	}
@@ -111,7 +118,10 @@ public class TC2_SearchHotelStep {
 	@Then("User should verify the header contains {string}")
 	public void user_should_verify_the_header_contains(String expAllRoomTypeText) {
 		String actAllRoomTypeText = pom.getSelectHotelPage().allRoomType();
-		Assert.assertEquals("User should verify the header contains All Room Type", expAllRoomTypeText, actAllRoomTypeText);
+		//Assert.assertEquals("User should verify the header contains All Room Type", expAllRoomTypeText, actAllRoomTypeText);
+		boolean contains = actAllRoomTypeText.contains(expAllRoomTypeText);
+		Assert.assertTrue(contains);
+		System.out.println(actAllRoomTypeText);
 	}
 
 

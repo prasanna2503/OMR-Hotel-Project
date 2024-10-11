@@ -137,7 +137,6 @@ public class SearchHotelPage extends BaseClass {
 	public String loginSuccessMsgText() {
 		
 		String loginSuccessMsgText = elementGetText(verifyAccount);
-		System.out.println(loginSuccessMsgText);
 		return loginSuccessMsgText;
 	}
 	
@@ -189,32 +188,26 @@ public class SearchHotelPage extends BaseClass {
 	
 	public String stateErrorMsgText() {
 		String stateErrorMsg = elementGetText(invalidState);
-		System.out.println(stateErrorMsg);
 		return stateErrorMsg;
 	}
 	public String cityErrorMsgText() {
 		String cityErrorMsg = elementGetText(invalidCity);
-		System.out.println(cityErrorMsg);
 		return cityErrorMsg;
 	}
 	public String checkInErrorMsgText() {
 		String checkInErrorMsg = elementGetText(invalidCheckInDate);
-		System.out.println(checkInErrorMsg);
 		return checkInErrorMsg;
 	}
 	public String checkOutErrorMsgText() {
 		String checkOutErrorMsg = elementGetText(invalidCheckoutDate);
-		System.out.println(checkOutErrorMsg);
 		return checkOutErrorMsg;
 	}
 	public String roomErrorMsgText() {
 		String roomErrorMsg = elementGetText(invalidRoom);
-		System.out.println(roomErrorMsg);
 		return roomErrorMsg;
 	}
 	public String adultErrorMsgText() {
 		String adultErrorMsg = elementGetText(invalidAdults);
-		System.out.println(adultErrorMsg);
 		return adultErrorMsg;
 	}
 	

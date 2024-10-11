@@ -187,7 +187,6 @@ public class BookHotelPage extends BaseClass {
 //		if (bookHotelText.equals("Book Hotel")) {
 //			System.out.println(bookHotelText);
 //		}
-		System.out.println(HotelNameText);
 		return HotelNameText;
 	}
 	
