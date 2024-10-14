@@ -1,6 +1,6 @@
 
 Feature: Verifying Search Hotel Module
-
+@Search
   Scenario Outline: Search hotels with all fields
     Given User is on the OMR Branch hotel page
     When User login "<userName>" and "<password>"
@@ -22,7 +22,7 @@ Feature: Verifying Search Hotel Module
     Examples: 
       | userName                | password    | state      | city    | checkIn    | check-out  | No of Room | No of Adults |
       | kprasanna2406@gmail.com | Lovely@0612 | Tamil Nadu | Chennai | 2024-10-13 | 2024-10-15 | 1-One      | 2-Two        |
-@Search
+
   Scenario Outline: Search hotels without entering any fields and verifying the error messages
     Given User is on the OMR Branch hotel page
     When User login "<userName>" and "<password>"

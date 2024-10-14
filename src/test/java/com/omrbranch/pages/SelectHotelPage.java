@@ -191,12 +191,14 @@ public class SelectHotelPage extends BaseClass {
 		
 	}
 	
-	public void saveLastHotelNameAndPrice() {
+	public void saveLastHotelName() {
 		int size = allHotelNames.size();
 		WebElement lastHotelName = allHotelNames.get(size-1);
 		lastHotelNameText = elementGetText(lastHotelName);
-		
-		int priceSize = allHotelPrices.size();
+	}
+	
+	public void saveLastHotelPrice() {
+		int size = allHotelPrices.size();
 		WebElement lastHotelPrice = allHotelPrices.get(size-1);
 		lastPrice = elementGetText(lastHotelPrice);
 	}
@@ -238,7 +240,7 @@ public class SelectHotelPage extends BaseClass {
 	public void selectFirstHotel() {
 		WebElement firstHotelContinueBtn = allContinueBtn.get(0);
 		elementClick(firstHotelContinueBtn);
-		acceptAlert();
+		dismissAlert();
 	}
 	
 }

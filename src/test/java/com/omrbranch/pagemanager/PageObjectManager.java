@@ -14,7 +14,7 @@ public class PageObjectManager {
 	private SelectHotelPage selectHotelPage;
 	private BookHotelPage bookHotelPage;
 	private BookingConfirmPage bookingConfirmPage;
-	private MyBookingPage bookingPage;
+	private MyBookingPage myBookingPage;
 	
 	public LoginPage getLoginPage() {
 		return (loginPage==null)?loginPage = new LoginPage():loginPage;
@@ -31,8 +31,8 @@ public class PageObjectManager {
 	public BookingConfirmPage getBookingConfirmPage() {
 		return (bookingConfirmPage==null)?bookingConfirmPage= new BookingConfirmPage():bookingConfirmPage;
 	}
-	public MyBookingPage getBookingPage() {
-		return (bookingPage==null)?bookingPage= new MyBookingPage():bookingPage;
+	public MyBookingPage getMyBookingPage() {
+		return (myBookingPage==null)?myBookingPage= new MyBookingPage():myBookingPage;
 	}
 	
 

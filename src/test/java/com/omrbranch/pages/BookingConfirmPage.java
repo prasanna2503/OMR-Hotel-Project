@@ -13,6 +13,8 @@ public class BookingConfirmPage extends BaseClass {
 		PageFactory.initElements(driver, this);
 	}
 	
+	public static String orderIdNumber;
+	
 	@FindBy(className="successful")
 	private WebElement orderDetails;
 	
@@ -27,6 +29,20 @@ public class BookingConfirmPage extends BaseClass {
 	
 	@FindBy(xpath="//button[text()='My Booking']")
 	private WebElement myBookingBtn;
+	
+	@FindBy(xpath = "//a[@data-testid='username']")
+	private WebElement profileTab;
+	
+	@FindBy(xpath = "//a[text()='My Account']")
+	private WebElement myAccountTab;
+
+	public WebElement getMyAccountTab() {
+		return myAccountTab;
+	}
+
+	public WebElement getProfileTab() {
+		return profileTab;
+	}
 
 	public WebElement getOrderDetails() {
 		return orderDetails;
@@ -48,5 +64,26 @@ public class BookingConfirmPage extends BaseClass {
 		return myBookingBtn;
 	}
 	
+	public String getOrderID() {
+		String orderIdNo = elementGetText(orderId);
+		orderIdNumber = orderIdNo.substring(1, 11);
+		return orderIdNumber;
+	}
 	
+	public String bookingCofirmMsg() {
+		String hotelName = elementGetText(bookingText);
+		return hotelName;
+	}
+	
+	public String bookedHotelNameText() {
+		String bookedHotelNameText = elementGetText(bookedHotelName);
+		//System.out.println(bookedHotelNameText);
+		return bookedHotelNameText;
+	}
+	
+	public void navigateMyBookingPage() throws InterruptedException {
+		elementClick(profileTab);
+		elementClick(myAccountTab);
+		Thread.sleep(2000);
+	}
 }

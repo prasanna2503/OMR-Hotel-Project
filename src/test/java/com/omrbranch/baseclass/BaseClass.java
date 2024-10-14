@@ -33,6 +33,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BaseClass {
 	public static WebDriver driver;
 	Select select;
+	
+	
+	public byte[]  screenshot() {
+		TakesScreenshot screenshot = (TakesScreenshot) driver;
+		byte[] b = screenshot.getScreenshotAs(OutputType.BYTES);
+		return b;
+	}
 
 	public void elementSendKeysEnter(WebElement element, String data) {
 		elementVisibility(element);
@@ -184,6 +191,11 @@ public class BaseClass {
 	public void elementSendKeysJs(WebElement element, String data) {
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].setAttribute('value','" + data + "')", element);
+	}
+	
+	public void elementClickJs(WebElement element) {
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click()", element);
 	}
 
 	public void elementClick(WebElement element) {

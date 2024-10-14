@@ -1,5 +1,7 @@
 package com.omrbranch.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,22 +10,25 @@ import com.omrbranch.baseclass.BaseClass;
 
 public class MyBookingPage extends BaseClass {
 	
+
 	public MyBookingPage() {
 		
 		PageFactory.initElements(driver, this);
 	}
 	
+	public static String orderIdNumber;
+	
 	@FindBy(name="search")
 	private WebElement searchTxtBox;
 	
-	@FindBy(className="room-code")
+	@FindBy(xpath="//div[@class='room-code']")
 	private WebElement orderIdForChange;
 	
 	@FindBy(xpath="//div[@id='bookinglist']//h5")
-	private WebElement roomHotelName;
+	private WebElement bookedHotelName;
 	
-	@FindBy(className="total-prize")
-	private WebElement hotelPrize;
+	@FindBy(xpath="//strong[@class='total-prize']")
+	private WebElement bookedHotelPrice;
 	
 	@FindBy(xpath="//button[text()='Edit']")
 	private WebElement editBtn;
@@ -34,7 +39,7 @@ public class MyBookingPage extends BaseClass {
 	@FindBy(xpath="//button[text()='Confirm']")
 	private WebElement confirmBtn;
 	
-	@FindBy(className="alertMsg")
+	@FindBy(xpath="//li[@class='alertMsg']")
 	private WebElement updateSuccessMsg;
 	
 	@FindBy(id="step2")
@@ -57,6 +62,16 @@ public class MyBookingPage extends BaseClass {
 	
 	@FindBy(xpath="//li[contains(text(),'cancelled')]")
 	private WebElement cancelMessage;
+	
+	@FindBy(xpath = "//div[@id='bookings']//h4")
+	private WebElement bookingText;
+	
+	@FindBy(xpath =  "//div[@id='bookinglist']//button[text()='Edit']")
+	private List<WebElement> allEditbtn;
+	
+	public List<WebElement> getAllEditbtn() {
+		return allEditbtn;
+	}
 
 	public WebElement getSearchTxtBox() {
 		return searchTxtBox;
@@ -67,11 +82,11 @@ public class MyBookingPage extends BaseClass {
 	}
 
 	public WebElement getRoomHotelName() {
-		return roomHotelName;
+		return bookedHotelName;
 	}
 
 	public WebElement getHotelPrize() {
-		return hotelPrize;
+		return bookedHotelPrice;
 	}
 
 	public WebElement getEditBtn() {
@@ -118,5 +133,64 @@ public class MyBookingPage extends BaseClass {
 		return cancelMessage;
 	}
 	
+	public String bookingsText() {
+		String bookingsText = elementGetText(bookingText);
+		return bookingsText;
+		
+	}
 	
+	public void insertOrderId() throws InterruptedException {
+		String orderIdNumberInsert = BookingConfirmPage.orderIdNumber;
+		elementSendKeysEnter(searchTxtBox, orderIdNumberInsert);
+		Thread.sleep(2000);
+	}
+	
+	public String orderIdVerification() {
+		String orderIdVer = elementGetText(orderIdForChange);
+		return orderIdVer;
+	}
+
+	public String bookedHotelNameVerification() {
+		String bookedHotelNameText = elementGetText(bookedHotelName);
+		return bookedHotelNameText;
+	}
+	
+	public String bookedHotelPrice() {
+		String bookedHotelPriceText = elementGetText(bookedHotelPrice);
+		return bookedHotelPriceText;
+	}
+	
+	public void modifyCheckInDate(String CheckInDate) throws InterruptedException {
+		Thread.sleep(2000);
+		elementClick(editBtn);
+		Thread.sleep(2000);
+		elementSendKeys(modifyCheckIn, CheckInDate);
+		elementClick(confirmBtn);
+	}
+	
+	public String updateSuccess() {
+		String updateSuccessfulMsg = elementGetText(updateSuccessMsg);
+		return updateSuccessfulMsg;
+	}
+	
+	public void searchOrderId(String Id) {
+		elementSendKeysEnter(searchTxtBox, Id);
+	}
+	
+	public void firstHotelEditCheckIn(String modifyCheckInDate) {
+		WebElement firstHotelEditBtn = allEditbtn.get(0);
+		elementClick(firstHotelEditBtn);
+		elementClear(modifyCheckIn);
+		elementSendKeys(modifyCheckIn, modifyCheckInDate);
+		elementClick(confirmBtn);
+	}
+	
+	public void lastHotelEditCheckIn(String modifyCheckInDate) {
+		int allEditBtnSize = allEditbtn.size();
+		WebElement lastEditBtn = allEditbtn.get(allEditBtnSize-1);
+		elementClick(lastEditBtn);
+		elementClear(modifyCheckIn);
+		elementSendKeys(modifyCheckIn, modifyCheckInDate);
+		elementClick(confirmBtn);
+	}
 }

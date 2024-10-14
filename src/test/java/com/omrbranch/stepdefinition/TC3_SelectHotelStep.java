@@ -15,7 +15,8 @@ public class TC3_SelectHotelStep {
 
 	@When("User save the last hotel name and hotel price")
 	public void saveLastHotelAndPrice() {
-		pom.getSelectHotelPage().saveLastHotelNameAndPrice();
+		pom.getSelectHotelPage().saveLastHotelName();
+		pom.getSelectHotelPage().saveLastHotelPrice();
 	}
 	
 	@When("User select the last hotel and accept the alert")
@@ -29,6 +30,9 @@ public class TC3_SelectHotelStep {
 		boolean contains = actHotelNameText.contains(expHotelNameText);
 		Assert.assertTrue(contains);
 		System.out.println(actHotelNameText);
+//		String actselectHotelText = pom.getSelectHotelPage().selectHotelText();
+//		Assert.assertEquals("Verify Select Hotel Text", expHotelNameText, actselectHotelText);
+//		System.out.println(actselectHotelText);
 	}
 
 	@When("User save the second from last hotel name and hotel price")

@@ -20,10 +20,7 @@ public class TC1_LoginStep extends BaseClass {
 
 	@Given("User is on the OMR Branch hotel page")
 	public void user_is_on_the_omr_branch_hotel_page() throws FileNotFoundException, IOException {
-		browserLaunch(getPropertyFileValue("browser"));
-		enterApplnUrl(getPropertyFileValue("url"));
-		maximizeWindow();
-		implicitWait();
+
 	}
 
 	@When("User login {string} and {string}")
